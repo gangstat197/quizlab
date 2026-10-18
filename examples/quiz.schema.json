@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "version",
+    "title",
+    "description",
+    "questions"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "question",
+          "options",
+          "answer",
+          "explanation",
+          "source",
+          "topic",
+          "difficulty"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "single",
+              "multiple",
+              "true_false"
+            ]
+          },
+          "question": {
+            "type": "string",
+            "description": "Câu hỏi độc lập, ngắn gọn; thường 10–25 từ, tối đa 35 từ, ngoại lệ dữ kiện cần thiết tối đa 45 từ. Không nhắc slide, tài liệu, học liệu, chương, trang hay nguồn."
+          },
+          "options": {
+            "type": "array",
+            "description": "Các lựa chọn cùng cấu trúc, cùng mức chi tiết và gần bằng độ dài. Không gắn nhãn A/B/C/D, không đánh dấu đáp án đúng.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "answer": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "explanation": {
+            "type": "string",
+            "description": "Lập luận sau khi chấm; giải thích bẫy kiến thức và vì sao các lựa chọn còn lại đúng/sai. Không dẫn nguồn trong câu hỏi."
+          },
+          "source": {
+            "type": "string",
+            "description": "Chỉ trường này chứa tên tài liệu và trang/slide/mục để đối chiếu sau khi làm bài. Không bịa nguồn."
+          },
+          "topic": {
+            "type": "string"
+          },
+          "difficulty": {
+            "type": "string",
+            "enum": [
+              "balanced",
+              "hard",
+              "expert"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

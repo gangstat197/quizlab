@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "title": "Tư duy phản biện & phân tích dữ liệu",
+  "description": "Quiz mẫu để trải nghiệm hệ thống. Tập trung vào suy luận nhân quả, xác suất và cách đọc kết quả nghiên cứu. Không được tạo từ tài liệu của bạn.",
+  "questions": [
+    {
+      "id": "demo-1",
+      "type": "single",
+      "question": "Một nghiên cứu quan sát cho thấy người uống nhiều cà phê có năng suất cao hơn. Kết luận nào được dữ liệu này hỗ trợ tốt nhất?",
+      "options": [
+        "Tăng lượng cà phê chắc chắn làm tăng năng suất.",
+        "Có mối liên hệ giữa hai biến, nhưng chưa xác định được quan hệ nhân quả.",
+        "Năng suất cao khiến mọi người uống nhiều cà phê hơn.",
+        "Không có yếu tố nào khác có thể giải thích kết quả."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Nghiên cứu quan sát xác lập tương quan, không tự loại trừ biến gây nhiễu hoặc nhân quả ngược. Chẳng hạn giờ làm việc có thể ảnh hưởng cả lượng cà phê và năng suất. Các kết luận còn lại khẳng định quan hệ vượt quá bằng chứng.",
+      "source": "Quiz mẫu · Nguyên tắc tương quan và nhân quả",
+      "topic": "Suy luận nhân quả",
+      "difficulty": "hard"
+    },
+    {
+      "id": "demo-2",
+      "type": "multiple",
+      "question": "Bạn đánh giá một thử nghiệm A/B về tỉ lệ chuyển đổi. Những biện pháp nào giúp giảm nguy cơ kết luận sai?",
+      "options": [
+        "Phân nhóm ngẫu nhiên trước thử nghiệm.",
+        "Dừng thử nghiệm ngay khi lần đầu thấy p < 0,05.",
+        "Xác định chỉ số chính và cỡ mẫu trước khi chạy.",
+        "Chỉ giữ lại người dùng đã mua hàng để phân tích tỉ lệ mua."
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "explanation": "Phân nhóm ngẫu nhiên giúp cân bằng yếu tố gây nhiễu; xác định chỉ số và cỡ mẫu trước giúp giảm lựa chọn kết quả có lợi. Dừng khi vừa có ý nghĩa thống kê làm tăng sai số loại I nếu không dùng thiết kế tuần tự; chỉ xét người mua tạo sai lệch chọn mẫu.",
+      "source": "Quiz mẫu · Thiết kế thử nghiệm",
+      "topic": "Thử nghiệm A/B",
+      "difficulty": "expert"
+    },
+    {
+      "id": "demo-3",
+      "type": "single",
+      "question": "Một bệnh có tỉ lệ lưu hành 1%. Xét nghiệm có độ nhạy 90% và độ đặc hiệu 90%. Trong 1.000 người, xác suất một người có kết quả dương tính thực sự mắc bệnh gần nhất với giá trị nào?",
+      "options": [
+        "90%",
+        "50%",
+        "8,3%",
+        "1%"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Trong 1.000 người có khoảng 10 người mắc bệnh: 9 dương tính thật. Trong 990 người không bệnh có khoảng 99 dương tính giả. Xác suất cần tìm là 9/(9+99) ≈ 8,3%. 90% nhầm độ nhạy với xác suất hậu nghiệm; 1% bỏ qua thông tin xét nghiệm.",
+      "source": "Quiz mẫu · Định lý Bayes và tỉ lệ nền",
+      "topic": "Xác suất",
+      "difficulty": "expert"
+    },
+    {
+      "id": "demo-4",
+      "type": "true_false",
+      "question": "Một kết quả có p = 0,03 cho phép khẳng định rằng xác suất giả thuyết không đúng bằng 3%.",
+      "options": [
+        "Đúng",
+        "Sai"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "p-value là xác suất quan sát dữ liệu ít nhất cực đoan như thực tế với điều kiện giả thuyết không và các giả định thống kê đúng. Nó không phải xác suất giả thuyết không đúng sau khi quan sát dữ liệu.",
+      "source": "Quiz mẫu · Diễn giải p-value",
+      "topic": "Thống kê suy luận",
+      "difficulty": "hard"
+    },
+    {
+      "id": "demo-5",
+      "type": "single",
+      "question": "Doanh thu trung bình tăng mạnh nhưng doanh thu trung vị gần như không đổi. Giả thuyết nào phù hợp nhất với hai quan sát này?",
+      "options": [
+        "Tất cả khách hàng đều chi tiêu nhiều hơn như nhau.",
+        "Một nhóm nhỏ khách hàng có mức chi tiêu rất cao đã kéo trung bình lên.",
+        "Số khách hàng chắc chắn đã tăng gấp đôi.",
+        "Dữ liệu chắc chắn được thu thập sai."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Trung bình nhạy với giá trị cực đoan, trong khi trung vị phụ thuộc vị trí giữa phân phối. Một nhóm nhỏ chi tiêu rất cao có thể làm trung bình tăng mà trung vị ít đổi. Không thể kết luận tăng đều, tăng số lượng hay lỗi dữ liệu chỉ từ hai thống kê này.",
+      "source": "Quiz mẫu · Trung bình và trung vị",
+      "topic": "Phân tích dữ liệu",
+      "difficulty": "hard"
+    },
+    {
+      "id": "demo-6",
+      "type": "multiple",
+      "question": "Một mô hình đạt độ chính xác 99% trên dữ liệu có 99% mẫu âm tính. Để hiểu chất lượng mô hình, bạn cần xem thêm những gì?",
+      "options": [
+        "Ma trận nhầm lẫn.",
+        "Chỉ độ chính xác trên cùng tập dữ liệu.",
+        "Precision và recall của lớp dương tính.",
+        "Kết quả trên tập kiểm tra độc lập đại diện cho thực tế."
+      ],
+      "answer": [
+        0,
+        2,
+        3
+      ],
+      "explanation": "Mô hình luôn dự đoán âm tính cũng đạt 99%. Ma trận nhầm lẫn và precision/recall cho thấy khả năng phát hiện lớp hiếm; tập kiểm tra độc lập giúp đánh giá khái quát hóa. Chỉ lặp lại accuracy không giải quyết vấn đề mất cân bằng lớp.",
+      "source": "Quiz mẫu · Đánh giá mô hình với dữ liệu mất cân bằng",
+      "topic": "Đánh giá mô hình",
+      "difficulty": "hard"
+    }
+  ]
+}
