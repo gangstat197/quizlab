@@ -4,5 +4,6 @@ import App from './App.jsx';
 import './styles.css';
 import './dashboard.css';
 import './theme.css';
+import './dark.css';
 
 createRoot(document.getElementById('root')).render(<App/>);

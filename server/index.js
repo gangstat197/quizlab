@@ -148,7 +148,7 @@ function validateLegacySession(input) {
 }
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
-  const app=createApp();const server=app.listen(Number(process.env.PORT)||3001,'127.0.0.1',()=>console.log(`Quizlab: http://127.0.0.1:${process.env.PORT||3001}`));
+  const app=createApp();const server=app.listen(Number(process.env.PORT)||3006,'127.0.0.1',()=>console.log(`Quizlab: http://127.0.0.1:${process.env.PORT||3006}`));
   let closing=false;
   const stop=async()=>{if(closing)return;closing=true;const force=setTimeout(()=>server.closeAllConnections(),5000);await new Promise(resolve=>server.close(resolve));clearTimeout(force);await app.locals.close();process.exit(0);};
   process.on('SIGINT',stop);process.on('SIGTERM',stop);

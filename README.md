@@ -75,14 +75,14 @@ Chạy lệnh sao chép `.env` chỉ khi cài mới. Điền API key vào `.env`
 ```dotenv
 GEMINI_API_KEY=your_key_here
 GEMINI_MODEL=gemini-2.5-flash
-PORT=3001
+PORT=3006
 ```
 
 ```sh
 npm run dev
 ```
 
-Mở **http://127.0.0.1:5173**. Đổi `.env` hoặc code backend thì khởi động lại lệnh trên. Nếu đổi `PORT`, cập nhật proxy trong `vite.config.js`.
+Mở **http://127.0.0.1:3005**. Frontend cố định ở port 3005; nếu port đang bận, ứng dụng sẽ báo lỗi thay vì tự chuyển port. Đổi `.env` hoặc code backend thì khởi động lại lệnh trên. Nếu đổi `PORT` của backend, cập nhật proxy trong `vite.config.js`.
 
 ## Lưu trữ và khôi phục
 
@@ -107,6 +107,7 @@ Có thể đổi thư mục dữ liệu bằng biến `QUIZLAB_DATA_DIR`. Không
 
 ## Sử dụng
 
+- **Giao diện sáng/tối:** nhấn biểu tượng mặt trăng/mặt trời ở thanh trên cùng. Lần đầu dùng theo giao diện hệ thống; lựa chọn sau đó được lưu trên trình duyệt.
 - **Tổng quan:** tiếp tục bài làm dở, số quiz, số câu thực sự đã trả lời trong bài đã nộp, độ chính xác theo tổng số câu, chuỗi ngày học, biểu đồ hoạt động 7 ngày và gợi ý ôn câu sai. Mọi số liệu lấy từ lịch sử thật; chưa có bài làm thì độ chính xác hiện `—`.
 - **Môn học:** tạo/sửa tên, chọn màu/icon, xem quiz và tiến độ từng môn. Chọn môn ngay khi tạo quiz (cả Gemini và nhập JSON), hoặc chuyển quiz cũ sang môn khác ở trang chi tiết. Quiz cũ mặc định ở **Chưa phân loại**. Xóa môn chuyển quiz/tác vụ/nháp về chưa phân loại và giữ nguyên lịch sử.
 - **Thư viện:** tìm theo tên/nội dung, lọc môn, độ khó, đã/chưa luyện; sắp xếp theo tên, thời gian tạo hoặc hoạt động gần nhất. Độ khó lọc theo những mức xuất hiện trong bộ quiz.
@@ -141,7 +142,7 @@ npm run build
 npm start
 ```
 
-Bản build và API cùng chạy ở **http://127.0.0.1:3001**. Tests dùng database tạm và Gemini giả lập, không gọi Google, không chạm dữ liệu thật. Có kiểm thử refresh, restart, SIGKILL, khôi phục tác vụ, chống ghi lặp, migration, deadline thi thử, sao lưu và chấm điểm.
+Bản build và API cùng chạy ở **http://127.0.0.1:3006**. Tests dùng database tạm và Gemini giả lập, không gọi Google, không chạm dữ liệu thật. Có kiểm thử refresh, restart, SIGKILL, khôi phục tác vụ, chống ghi lặp, migration, deadline thi thử, sao lưu và chấm điểm.
 
 API key chỉ ở `.env` backend. Chỉ chế độ Gemini gửi nội dung tài liệu đến Google. Backend bind `127.0.0.1`; ứng dụng này chưa có đăng nhập/phân quyền cho dịch vụ công khai. Giao diện dùng font hệ thống, không tải Google Fonts.
 

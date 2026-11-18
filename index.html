@@ -1,2 +1,9 @@
 <!doctype html>
-<html lang="vi"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="theme-color" content="#d9eaff"/><meta name="description" content="Tạo quiz từ tài liệu. Lưu tiến độ và tiếp tục bất cứ lúc nào."/><title>Quizlab</title></head><body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body></html>
+<html lang="vi"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="theme-color" content="#d9eaff"/><meta name="description" content="Tạo quiz từ tài liệu. Lưu tiến độ và tiếp tục bất cứ lúc nào."/><title>Quizlab</title><script>
+try {
+  const saved=localStorage.getItem('quizlab.theme');
+  const theme=saved==='dark'||saved==='light'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  document.documentElement.dataset.theme=theme;
+  document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#101722':'#f8f8f7';
+} catch { document.documentElement.dataset.theme='light'; }
+</script></head><body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body></html>

@@ -1,5 +1,5 @@
 import React,{useEffect,useRef,useState} from 'react';
-import { Plus,ArrowLeft,ArrowRight,Check,LoaderCircle,Settings2,X,Download,BookOpen,BarChart3,Sparkles,Clock3,ChevronRight,Upload,CheckCircle2,XCircle,Flag,LayoutDashboard,FolderOpen,Search,Database,ChevronDown } from 'lucide-react';
+import { Moon,Sun,Plus,ArrowLeft,ArrowRight,Check,LoaderCircle,Settings2,X,Download,BookOpen,BarChart3,Sparkles,Clock3,ChevronRight,Upload,CheckCircle2,XCircle,Flag,LayoutDashboard,FolderOpen,Search,Database,ChevronDown } from 'lucide-react';
 import { buildPrompt,difficultyLabels,typeLabels,parseQuiz,isCorrect } from '../shared/quiz.js';
 import { request,download,readLocal,writeLocal } from './api.js';
 import { loadFiles,saveFiles } from './files.js';
@@ -16,6 +16,13 @@ const go=route=>{window.location.hash=route;window.scrollTo({top:0});};
 function useRoute(){const [route,setRoute]=useState(()=>location.hash.slice(1)||'dashboard');useEffect(()=>{const update=()=>setRoute(location.hash.slice(1)||'dashboard');window.addEventListener('hashchange',update);return()=>window.removeEventListener('hashchange',update);},[]);return route;}
 
 export default function App(){
+  const [theme,setTheme]=useState(()=>document.documentElement.dataset.theme||'light');
+  function toggleTheme(){
+    const next=theme==='dark'?'light':'dark';
+    setTheme(next);document.documentElement.dataset.theme=next;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',next==='dark'?'#101722':'#f8f8f7');
+    try{localStorage.setItem('quizlab.theme',next);}catch{}
+  }
   const workspace=useWorkspace();const {data,commit,reload,error,setError,sync,operate,resultId,setResultId}=workspace;
   const route=useRoute();const [health,setHealth]=useState(null);const [search,setSearch]=useState('');const [editor,setEditor]=useState(null);
   const hasJobs=data?.jobs.some(j=>['queued','running'].includes(j.status));
@@ -47,7 +54,7 @@ export default function App(){
       <nav className="sidebar-subjects" aria-label="Môn học">{data?.subjects.slice(0,5).map(s=><a className={route===`subject/${s.id}`?'active':''} href={`#subject/${s.id}`} key={s.id} onClick={()=>setSearch('')}><span className={`subject-dot tone-${s.color}`}/><span>{s.name}</span><em>{data.quizzes.filter(q=>q.subjectId===s.id).length}</em></a>)}{!data?.subjects.length&&<button className="add-first-subject" disabled={!data} onClick={()=>openEditor()}><Plus size={14}/> Thêm môn đầu tiên</button>}{!!data?.subjects.length&&<a href="#subjects" className="all-subjects">Xem tất cả môn <ArrowRight size={12}/></a>}</nav>
     </aside>
     <div className="workspace">
-      <header className="header"><a className="mobile-brand" href="#dashboard"><BookOpen size={22}/><strong>quizlab.</strong></a><div className="header-location"><strong>{heading}</strong></div><div className="header-right">{!libraryView&&route!=='run'&&<form className="global-search" onSubmit={e=>{e.preventDefault();go('quizzes');}}><Search size={16}/><input aria-label="Tìm quiz" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Tìm quiz của bạn…"/><kbd>↵</kbd></form>}<span className={`connection-pill ${health?.geminiConfigured?'ready':''}`} title={health?.geminiConfigured?'Đã cấu hình API key':'Thêm API key trong .env'}><i/>{health?.geminiConfigured?'Gemini':'Chưa cấu hình AI'}</span><Settings health={health}/></div></header>
+      <header className="header"><a className="mobile-brand" href="#dashboard"><BookOpen size={22}/><strong>quizlab.</strong></a><div className="header-location"><strong>{heading}</strong></div><div className="header-right">{!libraryView&&route!=='run'&&<form className="global-search" onSubmit={e=>{e.preventDefault();go('quizzes');}}><Search size={16}/><input aria-label="Tìm quiz" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Tìm quiz của bạn…"/><kbd>↵</kbd></form>}<span className={`connection-pill ${health?.geminiConfigured?'ready':''}`} title={health?.geminiConfigured?'Đã cấu hình API key':'Thêm API key trong .env'}><i/>{health?.geminiConfigured?'Gemini':'Chưa cấu hình AI'}</span><button className="theme-toggle" onClick={toggleTheme} aria-label={theme==='dark'?'Bật giao diện sáng':'Bật giao diện tối'} title={theme==='dark'?'Giao diện sáng':'Giao diện tối'} aria-pressed={theme==='dark'}>{theme==='dark'?<Sun size={18}/>:<Moon size={18}/>}</button><Settings health={health}/></div></header>
       <main className={route==='run'?'main reading':`main ${route==='new'?'creating':''}`}>
         {error&&<div className="notice error" role="alert"><span>{error}</span><button onClick={()=>{setError('');workspace.retry();}}>Thử lại</button><button className="icon" aria-label="Đóng lỗi" onClick={()=>setError('')}><X size={15}/></button></div>}
         {!data?<div className="empty"><p>{error?'Không tải được dữ liệu.':'Đang mở dữ liệu…'}</p>{error&&<button onClick={workspace.retry}>Kết nối lại</button>}</div>:<>

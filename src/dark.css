@@ -1,0 +1,134 @@
+:root { color-scheme: light; }
+.theme-toggle { padding: 9px; flex-shrink: 0; }
+:root[data-theme=dark] {
+  color-scheme: dark;
+  color: #e5eaf3;
+  background: #101722;
+  --blue: #6695ff;
+  --blue-dark: #4b7bea;
+  --blue-soft: #223452;
+  --green: #4adea0;
+  --green-soft: #153c30;
+  --red: #ff8b9a;
+  --red-soft: #442633;
+  --purple: #bc9aff;
+  --purple-soft: #34294b;
+  --muted: #acb8cb;
+  --line: #334155;
+  --surface: #192332;
+  --raised: #223044;
+}
+/* The root selector keeps these overrides above the existing page styles. */
+:root[data-theme=dark] {
+  & body, & .app { background: #101722; color: #e5eaf3; }
+  & .sidebar, & .workspace .header, & .mobile-nav,
+  & .metric-card, & .study-card, & .weekly-card, & .review-suggestions,
+  & .library-tools, & .onboarding-card, & .compact-empty, & .active-study,
+  & .form-page, & .main.creating .form-page, & .settings>div, & .subject-dialog,
+  & .quiz-row, & .history-row, & .empty, & .start-bar, & .metadata,
+  & .review-item, & .question-pane, & .answer-pane, & .step-bar,
+  & .exam-exit, & .exam-timer, & .quiz-organization, & .result-heading {
+    background: var(--surface); border-color: var(--line); box-shadow: none;
+  }
+  & h1, & h2, & h3, & .sidebar .brand-name, & .mobile-brand>strong,
+  & .header-location strong, & .metric-card>strong, & .weekly-total>strong,
+  & .compact-empty strong, & .review-suggestion-list strong, & .question-text,
+  & .exam-timer, & .no-review>strong { color: #e5eaf3; }
+  & p, & .hint, & .page-description, & .today-label, & .metric-label,
+  & .study-card-meta, & .study-card-foot>span:first-child, & .library-count,
+  & .week-label, & .week-value, & .weekly-total>span, & .running-title,
+  & .sidebar-nav>a, & .sidebar-subjects>a, & .sidebar-nav>a>svg,
+  & .sidebar-label, & .sidebar-subject-heading .sidebar-label,
+  & .sidebar-subjects>a.all-subjects, & .mobile-nav>a, & .form-page label,
+  & legend, & label.check, & .explanation, & .explanation small, & footer,
+  & .completion-label, & .completion-label strong, & .runner-secondary>span,
+  & .settings>summary, & .connection-pill { color: var(--muted); }
+  & button, & .button, & input:not([type=checkbox]), & textarea, & select,
+  & .global-search, & .global-search kbd, & .method-tabs, & .checks>label,
+  & .files li, & .review-options>div, & .answer>.letter, & .icon-options>button,
+  & .subject-preview, & .subject-suggestions>button, & .settings code {
+    background: var(--raised); border-color: var(--line); color: #d5deed;
+  }
+  & input::placeholder, & textarea::placeholder { color: #98a8bd; }
+  & .search { background: var(--raised) !important; }
+  & button:hover, & .button:hover, & .sidebar-nav>a:hover, & .sidebar-subjects>a:hover {
+    background: #2b3d56; color: #e5eaf3; border-color: #627a9e;
+  }
+  & button.primary, & .button.primary, & .step.current { background: var(--blue); border-color: var(--blue); color: #0d1930; }
+  & button.primary:hover, & .button.primary:hover { background: #8ab0ff; }
+  & button.link, & button.icon, & .review-suggestion-list button { background: transparent; color: #9cbaff; }
+  & .sidebar-nav>a.active, & .sidebar-subjects>a.active, & .mobile-nav>a.active,
+  & .add-first-subject, & .card-launch, & .resume, & .answer.selected,
+  & .answer:disabled.selected:hover, & .checks>label:has(input:checked) {
+    background: var(--blue-soft); color: #b0c9ff; border-color: #5374a6;
+  }
+  & .sidebar-nav>a.active>svg, & .section-title>a, & .subject-management a,
+  & .compact-empty>button, & .week-day.today .week-label, & .settings strong { color: #9cbaff; }
+  & .sidebar-nav em, & .sidebar-subjects em, & .level-tag, & .completion-track,
+  & .week-column>span { background: var(--raised); color: var(--muted); }
+  & .week-column>span.has-activity { background: #a78bfa; }
+  & .week-day.today .week-column>span.has-activity { background: var(--blue); }
+  & .answer, & .answer:disabled:hover { background: var(--raised); border-color: var(--line); color: #e5eaf3; box-shadow: none; }
+  & .correct, & .answer.correct { color: #9aefbd !important; box-shadow: none; }
+  & .incorrect { color: #ffb1bc !important; box-shadow: none; }
+  & .step.right, & .high { background: var(--green-soft); color: #9aefbd; }
+  & .step.wrong, & .low, & .notice, & .job.failed, & .exam-timer.urgent { background: var(--red-soft); color: #ffb1bc; border-color: #885164; }
+  & .job, & .type-badge, & .review-icon { background: var(--purple-soft); color: var(--purple); border-color: #63507c; }
+  & .job-heading strong { color: #d2bbff; }
+  & .job.failed strong, & .job-error { color: #ffb1bc; }
+  & .medium, & .mode-badge, & .weekly-icon { background: #44351e; color: #f7ca83; }
+  & .file-picker, & .topic-badge, & .step.answered { background: var(--blue-soft); color: #b0c9ff; border-color: #5374a6; }
+  & .learning-hero { background: linear-gradient(120deg,#203351,#283151); border-color: #3c5275; }
+  & .learning-hero h2 { color: #edf3ff; }
+  & .learning-hero p, & .hero-kicker { color: #bdcde8; }
+  & .hero-secondary { background: var(--raised); color: #d5deed; border-color: #627a9e; }
+  & .create-shortcut { background: #24314a; border-color: #405574; }
+  & .create-shortcut strong { color: #d5deed; }
+  & .tone-blue { --tone:#83aaff; --tone-ink:#b3cbff; --tone-bg:#233452; --tone-border:#405c8b; }
+  & .tone-purple { --tone:#bd9aff; --tone-ink:#d7c2ff; --tone-bg:#332947; --tone-border:#614b7f; }
+  & .tone-green { --tone:#62d9aa; --tone-ink:#a0edcc; --tone-bg:#1b3932; --tone-border:#326657; }
+  & .tone-orange { --tone:#ffb16b; --tone-ink:#ffd0a7; --tone-bg:#403022; --tone-border:#805736; }
+  & .tone-pink { --tone:#ff8fbe; --tone-ink:#ffbbd7; --tone-bg:#41283b; --tone-border:#7d4667; }
+  & .tone-teal { --tone:#67d5e6; --tone-ink:#a2edf6; --tone-bg:#1d3740; --tone-border:#346371; }
+  & .tone-neutral { --tone:#a7b7cf; --tone-ink:#d0dbea; --tone-bg:#293447; --tone-border:#4b5c75; }
+  & .subject-card h3, & .subject-card p { color: var(--tone-ink); }
+  & .subject-card .subject-icon { color: #101722; }
+  & .result-heading strong, & .result-heading p, & .review-heading label,
+  & .subject-dialog .field-label, & .subject-field>label { color: var(--muted); }
+  & .result-score { border-color: var(--surface); }
+  & .result-mark.good { background: var(--green-soft); color: #9aefbd; }
+  & .result-mark.bad { background: var(--red-soft); color: #ffb1bc; }
+  & .library-search, & .creating .method-tabs, & .subject-field-controls>button,
+  & .section-title h2>span { background: var(--raised); border-color: var(--line); color: #d5deed; }
+  & .subject-edit { background: var(--raised) !important; }
+  & .subject-preview { background: var(--tone-bg); border-color: var(--tone-border); }
+  & .subject-preview .subject-icon { background: var(--raised); }
+  & .subject-dialog::backdrop { background: #080e19b3; }
+  & .method-tabs button { background: transparent; color: var(--muted); }
+  & .method-tabs button.selected, & .icon-options>.chosen,
+  & .section-icon.blue, & .color-0, & .question-count, & .row-arrow,
+  & .upload-icon, & .empty-icon, & .library-empty .empty-icon, & .step-next {
+    background: var(--blue-soft); color: #b0c9ff; border-color: #5374a6;
+  }
+  & .method-tabs button:nth-child(2).selected, & .color-1, & .shortcut-icon {
+    background: var(--purple-soft); color: #d2bbff;
+  }
+  & .color-2, & .section-icon.mint, & .storage-icon { background: var(--green-soft); color: #9aefbd; }
+  & .color-3 { background: #44351e; color: #f7ca83; }
+  & .color-choice { background: var(--tone-bg); }
+  & .color-choice.chosen, & .color-choice:hover { border-color: var(--tone); }
+  & .color-choice.chosen::after { color: #101722; }
+  & .file-picker:hover { background: #2b3d56; }
+  & .exam-exit:hover, & .subject-management>.icon:hover { background: var(--red-soft); color: #ffb1bc; }
+  & .answer.selected>.letter { background: var(--blue); color: #0d1930; }
+  & .answer.correct>.letter { background: var(--green); color: #0d1930; }
+  & .answer.incorrect>.letter { background: var(--red); color: #0d1930; }
+  & .book-card { background: #314562; border-color: #526b90; }
+  & .book-card>span { background: #627a9e; }
+  & .back-card { background: #3c4674; }
+  & .art-orbit { background: #3c487480; }
+  & .art-check { background: var(--green-soft); color: #9aefbd; }
+  & .hero-secondary:hover { color: #e5eaf3; }
+  & .review-suggestion-list div>span { color: #f7ca83; }
+}
+@media(max-width:500px) { .header-right { gap: 8px; } .theme-toggle { min-width: 36px; padding: 8px; } }
